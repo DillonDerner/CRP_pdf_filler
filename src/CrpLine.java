@@ -1,7 +1,6 @@
 public class CrpLine {
 
     private String renter_name;
-    private String spouse;
     private String unit_address;
     private String appartment_number;
     private String city;
@@ -28,8 +27,12 @@ public class CrpLine {
 
 
     public CrpLine(String[] csvLine) {
-        this.renter_name = csvLine[0];
-        this.spouse = csvLine[1];
+        if (csvLine[1].isEmpty()) {
+            this.renter_name = csvLine[0];
+        } else {
+            String[] name_split =  csvLine[0].split(" ");
+            this.renter_name = name_split[0] + " & " + csvLine[1].split(" ")[0] + " " + name_split[1];
+        }
         this.unit_address = csvLine[2];
         this.appartment_number = csvLine[3];
         this.city = csvLine[4];
@@ -61,14 +64,6 @@ public class CrpLine {
 
     public void setRenter_name(String renter_name) {
         this.renter_name = renter_name;
-    }
-
-    public String getSpouse() {
-        return spouse;
-    }
-
-    public void setSpouse(String spouse) {
-        this.spouse = spouse;
     }
 
     public String getUnit_address() {
