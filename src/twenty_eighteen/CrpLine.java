@@ -1,3 +1,5 @@
+package twenty_eighteen;
+
 public class CrpLine {
 
     private String renter_name;

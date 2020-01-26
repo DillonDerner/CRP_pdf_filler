@@ -1,4 +1,7 @@
-import com.itextpdf.text.*;
+package twenty_eighteen;
+
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfReader;
@@ -56,7 +59,7 @@ public class Main {
 
         String name = crpLine.getRenter_name().replace(' ', '_');
 
-        String outpath = String.format("C:/dev/fillable-pdf/pdf_filler/output_crps/%s_%s_%s_CRP.pdf", year, crpLine.getCompany(), name);
+        String outpath = String.format("C:/dev/fillable-pdf/pdf_filler/output_crps/%s/%s_%s_%s_CRP.pdf", year, year, crpLine.getCompany(), name);
         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(outpath));
         AcroFields fields = stamper.getAcroFields();
 

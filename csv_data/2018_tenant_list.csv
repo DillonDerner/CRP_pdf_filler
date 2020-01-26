@@ -1,2 +1,2 @@
 renter_name|spouse|unit_address|appartment_number|city|state|zipcode|property_parcel_number|properties_total_units|county|rental_start|rental_end|number_of_adults|cx_is_married_couple|rent_paid|medical_assistance|housing_support|cx_is_mobile_home|cx_government_agency_helped|rent_reduction|owners_name|owners_address|business_phone|signature|company
-Name|SPOUSE|Line 1||Filler|Info|ZIP|PARCELID|||8/1/2018|12/31/2018|1||3175||175|x|||Company Name|po box and address|8675-309|Your Name|Code
+Name LastName|SPOUSE|Line 1||Filler|Info|ZIP|PARCELID|||8/1/2018|12/31/2018|1||3175||175|x|||Company Name|po box and address|8675-309|Your Name|Code
