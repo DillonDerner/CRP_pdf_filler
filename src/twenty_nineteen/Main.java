@@ -16,7 +16,7 @@ import java.util.Date;
 public class Main {
 
     private static final String BASE_CRP         = "C:/dev/fillable-pdf/pdf_filler/base_crp/2019_base_crp.pdf";
-    private static final String TENANT_CRP_DATA  = "C:/dev/fillable-pdf/pdf_filler/csv_data/2019_EGP_tenant_list.csv";
+    private static final String TENANT_CRP_DATA  = "C:/dev/fillable-pdf/pdf_filler/csv_data/2019_example_list.csv";
     private static String year = "2019";
     private static String date = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
     private static BaseFont courier = FontFactory.getFont("Courier").getBaseFont();
