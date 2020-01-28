@@ -139,7 +139,7 @@ public class Main {
         fields.setField("renterstate",               "MN");
         fields.setField("toMMDDYYYY",                crpLine.getRental_end());
         fields.setField("ZIPCode",                   "55388");
-        fields.setField("rentercity",                crpLine.getState());
+        fields.setField("rentercity",                crpLine.getCity());
         fields.setField("propertyownerDaytimePhone", crpLine.getBusiness_phone());
         fields.setField("propertyidorparcel",        crpLine.getProperty_parcel_number());
         fields.setField("numberofunits",             crpLine.getProperties_total_units());
@@ -149,7 +149,7 @@ public class Main {
         fields.setField("TotalMonthsRented",         getTotalMonthsRented(crpLine.getRental_start(), crpLine.getRental_end()));
         fields.setField("Renterfirstnameandinitial", crpLine.getRenter_fname());
         fields.setField("Signaturedate",             date);
-        fields.setField("City",                      crpLine.getCity());
+        fields.setField("City",                      "Watertown");
         fields.setField("PropertyOwnername",         crpLine.getOwners_name());
         fields.setField("PropertyOwnerAddress",      crpLine.getOwners_address());
         // The Electronic Certification Number (ECN) is generated when creating CRPs in e-Services. If you do not use e-Services, leave this field blank.
@@ -197,9 +197,15 @@ public class Main {
     }
 
     private static String getTotalMonthsRented(String start, String end) {
-        int startMonth = Integer.parseInt(start.split("/")[0]);
-        int endMonth = Integer.parseInt(end.split("/")[0]);
-        return Integer.toString(endMonth - startMonth + 1);
+        try {
+            int startMonth = Integer.parseInt(start.split("/")[0]);
+            int endMonth = Integer.parseInt(end.split("/")[0]);
+            return Integer.toString(endMonth - startMonth + 1);
+        } catch (Exception e) {
+            int startMonth = Integer.parseInt(start.split("\\.")[0]);
+            int endMonth = Integer.parseInt(end.split("\\.")[0]);
+            return Integer.toString(endMonth - startMonth + 1);
+        }
     }
 
 }
