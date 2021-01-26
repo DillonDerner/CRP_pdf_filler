@@ -1,0 +1,43 @@
+A:0                             MEDICAID RENT PAID
+B:3                             HOUSING SUPPORT RENT PAID
+AdultFosterCare:10              CHECKBOX
+AssistedLiving:11               CHECKBOX
+housingsupportno:13             CHECKBOX
+MobileHome:18                   CHECKBOX
+medicaidyes:20                  CHECKBOX
+NursingHome:21                  CHECKBOX
+medicaidno:33                   CHECKBOX
+IntermediateCareFacility:34     CHECKBOX
+MobileHomeLot:35                CHECKBOX
+housingsupportyes:38            CHECKBOX
+
+
+v v v TEXT FIELDS v v v
+
+DaytimePhone:1
+renterstate:2
+toMMDDYYYY:4
+ZIPCode:5
+rentercity:6
+propertyownerDaytimePhone:7
+propertyidorparcel:8
+numberofunits:9
+RentedfromMMDDYYYY:12
+renterzip:14
+Renterlastname:15
+TotalMonthsRented:16
+Renterfirstnameandinitial:17
+Signaturedate:19
+City:22
+PropertyOwnername:23
+PropertyOwnerAddress:24
+ECN:25
+1:26
+unit:27
+2:28
+3:29
+unitaddress:30
+rentercounty:31
+State:32
+NumberofAdultsLivinginUnit:36
+MangingAgentNameIfApplicablepleaseprint:37
