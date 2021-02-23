@@ -36,12 +36,14 @@ public class Main {
         try {
             br = new BufferedReader(new FileReader(TENANT_CRP_DATA));
             br.readLine(); // this should skip the header row
+            double total_rent_collected = 0;
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] tenant_crp_data = line.split(cvsSplitBy);
                 CrpLine crpLine = new CrpLine(tenant_crp_data);
-                manipulatePdf(crpLine);
+                total_rent_collected += manipulatePdf(crpLine);
             }
+            System.out.println("You collected a total of " + total_rent_collected + " this year!");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -59,7 +61,7 @@ public class Main {
         }
     }
 
-    public static void manipulatePdf(CrpLine crpLine) throws DocumentException, IOException {
+    public static double manipulatePdf(CrpLine crpLine) throws DocumentException, IOException {
         PdfReader reader = new PdfReader(BASE_CRP);
 
         String crp_tenant_name = crpLine.getRenter_fname() + "_" + crpLine.getRenter_lname();
@@ -158,6 +160,7 @@ public class Main {
         fields.setField("PropertyOwnerAddress",      crpLine.getOwners_address());
         // The Electronic Certification Number (ECN) is generated when creating CRPs in e-Services. If you do not use e-Services, leave this field blank.
         fields.setField("ECN",                       "");
+        double rent_paid = getRentalPaidDouble(crpLine.getRent_paid());
         fields.setField("1",                         crpLine.getRent_paid());  // Renter’s share of rent paid
         fields.setField("2",                         "0");               // Caretaker rent reduction
         fields.setField("3",                         crpLine.getRent_paid());  // Total rent (Add lines 1 and 2
@@ -172,6 +175,7 @@ public class Main {
         stamper.setFormFlattening(true); // this makes all fields un editable
         stamper.close();
         reader.close();
+        return rent_paid;
     }
 
     private static String isOn(String hasValue) {
@@ -198,6 +202,17 @@ public class Main {
         double rentalPercentage = intAmountPaid * percentage;
         DecimalFormat df = new DecimalFormat("#.##");
         return df.format(rentalPercentage);
+    }
+
+    private static double getRentalPaidDouble(String amountPaid) {
+        double doubleAmountPaid = 0;
+        try {
+            doubleAmountPaid = Double.parseDouble(amountPaid);
+        } catch (Exception e){
+            System.out.println("Could not cast amount of rent paid to double");
+            System.out.println(e);
+        }
+        return doubleAmountPaid;
     }
 
     private static String getTotalMonthsRented(String start, String end) {
